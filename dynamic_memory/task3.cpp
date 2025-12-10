@@ -25,15 +25,7 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        if(arr[i] == 5)
-        {
-            arr[i] = 0;
-        }
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        if(arr[i] != 0)
+        if(arr[i] != 5)
         {
             newarr[j] = arr[i];
             j++;
@@ -45,7 +37,7 @@ int main()
 
     arr = newarr;
     
-    cout << endl << "Перезаписанный с удаленным элементом массив:" << endl;
+    cout << endl << "Новый массив с удаленным элементом:" << endl;
     for (int i = 0; i < n-1; i++)
     {
         cout << arr[i];
