@@ -37,7 +37,7 @@ int main()
 
     //Массивы
     Student group[3]{ {"Семен", 17, 3.2}, {"Стас", 23, 4.6}, {"Витя", 21, 4.3}};
-    cout << group[0].name;
+    cout << group[0].name << endl;
 
     // Векторы
     vector<Student> students;
