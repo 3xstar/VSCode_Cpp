@@ -8,8 +8,9 @@ class FirstApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 20, 223, 223),
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 77, 85, 92),
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
           title: const Text('First flutter app'),
         ),
 
@@ -27,7 +28,7 @@ class FirstApp extends StatelessWidget {
               ),
               const Icon(
                 Icons.headphones,
-                color: Colors.white,
+                color: Color.fromARGB(255, 0, 0, 0),
                 size: 50.0,
                 
               ),
