@@ -54,5 +54,6 @@
         "myselfworkmassives": "cpp",
         "func1": "cpp"
     },
-    "C_Cpp.default.compilerPath": "C:/msys64/mingw64/bin/gcc.exe"
+    "C_Cpp.default.compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
+    "dart.showTodos": false
 }
