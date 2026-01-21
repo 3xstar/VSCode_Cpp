@@ -2,6 +2,7 @@
 #include <array>
 #include <vector>
 #include <map>
+#include <algorithm>
 using namespace std;
 
 int main(){
@@ -46,5 +47,15 @@ int main(){
     // Проверка
     cout << *numbers.begin() << endl;
     cout << *numbers.end() << endl; // Адресная ячейка после последнего элемента
+
+    for (auto i = numbers.begin(); i != numbers.end(); i++){
+        cout << "Тип i: " << typeid(i).name() << endl;
+        cout << "Текущий элемент: " << i << endl;
+    }
+
+    sort(numbers.begin(), numbers.end());
+    for (int item : numbers){
+        cout << item << endl;
+    }
 
 }
