@@ -2,89 +2,51 @@
 
 using namespace std;
 
-void withdraw_balance(double& balance){
-    double amount;
+struct Day{
+    string day_name;
+    int steps_count;
+};
 
-    while(true){
-        cout << "Введите количество денег для снятия: ";
-        cin >> amount;
-
-        if(amount > balance){
-            cout << "Ошибка: нельзя снять денег больше, чем есть на балансе" << endl;
-            continue;
-        }
-        if(amount <= 0){
-            cout << "Ошибка: сумма не может быть отрицательной или равной нулю" << endl;
-            continue;
-        }
-        
-
-        balance -= amount;
-        cout << "Деньги успешно сняты с баланса" << endl;
-        cout << "Текущий баланс: " << balance << endl;
-        break;
-    }
-}
-
-void top_up_balance(double& balance){
-    double amount;
-
-    while(true){
-        cout << "Введите количество денег для пополнения: ";
-        cin >> amount;
-
-        if(amount <= 0){
-            cout << "Ошибка: сумма не может быть отрицательной или равной нулю" << endl;
-            continue;
-        }
-
-        balance += amount;
-        cout << "Деньги успешно зачислены на баланс" << endl;
-        cout << "Текущий баланс: " << balance << endl;
-        break;
+void step_enter(Day (&array)[7]){
+    for(Day& d : array){
+        cout << "Сколько шагов было сделано в " << d.day_name << ": ";
+        cin >> d.steps_count; 
     }
 };
 
-void check_balance(double& balance){
-    cout << "Ваш текущий баланс: " << balance << endl;
-};
-
-void menu(double& balance){
-    cout << "Добро пожаловать в банк! Здесь вы можете выполнять операции со своим балансом" << endl;
-    cout << "Ваш текущий баланс: " << balance << endl;
-    while(true){
-    cout << "1. Снять денег с баланса\n2. Пополнить деньги на балансе\n3. Проверить баланс\n4. Выйти из банка\n";
-    int choice;
-    cout << "Введите номер действия: ";
-    cin >> choice;
-    switch (choice){
-        case 1:{
-            withdraw_balance(balance);
-            break;
-           }
-        case 2:{
-            top_up_balance(balance);
-            break;
-           }
-        case 3:{
-            check_balance(balance);
-            break;
-           }
-        case 4:{
-            cout << "До встречи!";
-            return;
-           }
-        default:
-        cout << "Ошибка: введите число от 1 до 4";
-        cin.clear();
-        cin.ignore(10000, '\n');
-        }
+void day_operations(Day (&array)[7]){
+    Day min_steps_day = {"Day", array[0].steps_count};
+    Day max_steps_day = {"Day", 0};
+    int sum = 0;
+    
+    for(Day& d : array){
+        if(min_steps_day.steps_count >= d.steps_count){
+            min_steps_day = d;}
     }
+
+    for(Day& d : array){
+        if(max_steps_day.steps_count < d.steps_count){
+            max_steps_day = d;}
+        }
+    
+
+    for(Day& d : array){
+        sum += d.steps_count;
+    }
+    double middle_steps = sum / 7;
+    
+    cout << "День с минимальным количеством шагов: " << min_steps_day.day_name << endl;
+    cout << "День с максимальным количеством шагов: " << max_steps_day.day_name << endl;
+    cout << "Среднее количество шагов в неделю: " << middle_steps << endl;
 };
 
 int main(){
-    double balance = 0;
-    cout << "Введите ваш изначальный баланс: ";
-    cin >> balance;
-    menu(balance);
+    Day week[7]{{"Monday", 0}, {"Tuesday", 0}, {"Wednesday", 0},
+     {"Thursday", 0}, {"Friday", 0}, {"Saturday", 0}, {"Sunday", 0}};
+
+    cout << "Отчет шагов за неделю" << endl;
+    step_enter(week);
+    cout << endl;
+    cout << "По результатам..." << endl;
+    day_operations(week);
 }

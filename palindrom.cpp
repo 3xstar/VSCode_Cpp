@@ -1,13 +1,10 @@
 #include <iostream>
-#include <string>
 #include <algorithm>
 
 using namespace std;
 
 int main()
 {
-    setlocale(LC_ALL, "ru");
-
     string word;
     cout << "Введите слово: ";
     cin >> word;
