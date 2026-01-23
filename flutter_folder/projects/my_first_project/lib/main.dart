@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 //import 'package:my_first_project/first_app.dart';
 //import 'package:my_first_project/axis.dart';
 //import 'package:my_first_project/margin_padding.dart';
-import 'package:my_first_project/phone_card.dart';
+// import 'package:my_first_project/phone_card.dart';
+import 'package:my_first_project/delivery_card.dart';
 
 void main() {
   //runApp(const MyApp());
-  runApp(const NameApp());
+  runApp(const CardApp());
 }
 
 class MyApp extends StatelessWidget {
