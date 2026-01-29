@@ -6,34 +6,34 @@ class MainWindow(QWidget):
     # Базовая настройка окна
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('Проверка возраста') # Задаем заголовок окну
+        self.setWindowTitle('Перевод градусов') # Задаем заголовок окну
         self.resize(400, 300) # Выставляем размеры
         self.setup_ui() # Загружаем интерфейс
 
     def setup_ui(self):
         layout = QVBoxLayout() # Создаем контейнер
         self.label = QLabel()
-        self.label.setStyleSheet("""font-size: 24pt;
+        self.label.setStyleSheet("""font-size: 17pt;
                                  color: cyan;""")
 
         self.entry = QLineEdit() # Создаем поле ввода
-        self.entry.returnPressed.connect(self.age_check) # Обрабатываем нажатие
-        self.label.setText("Введите ваш возраст в поле")
+        self.label.setText("Введите градусы Цельсия снизу в поле")
 
         layout.addWidget(self.label) # Добавляем текстовую метку, на созданный контейнер
         layout.addWidget(self.entry) # Добавляем поле ввода на контейнер
+        self.button = QPushButton("ПЕРЕВЕСТИ") #Создаем кнопку
+        self.button.clicked.connect(self.transform) #Создаем обработчик событий
+        layout.addWidget(self.button)
         self.setLayout(layout) # Подружаем созданный контейнер
 
-    def age_check(self):
+    def transform(self):
         try:
-            age = self.entry.text() # Считываем текст с поля ввода и заносим его в переменную
+            celsiya = self.entry.text() # Считываем текст с поля ввода и заносим его в переменную
 
             # Мини-проверка на то, что пользователь что-то ввел
-            if int(age) < 18:
-                self.label.setText("Вы несовершеннолетний")
-
-            if int(age) >= 18:
-                self.label.setText("Вы совершеннолетний")
+            if int(celsiya):
+                farengeita = (int(celsiya) * 1.8) + 32
+                self.label.setText(f"Количество градусов Фаренгеита: {farengeita}")
 
         except ValueError:
             self.label.setText("Вы должны ввести число")

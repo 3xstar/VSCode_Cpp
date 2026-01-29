@@ -14,34 +14,56 @@
             title: const Text("Визитка")
           ),
           body: Padding(
-            padding: EdgeInsets.only(top:40),
-            child: Container(
-              margin: const EdgeInsets.all(20),
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const CircleAvatar(
-                    radius: 50,
-                    backgroundColor: Colors.cyan,
-                    child: Icon(Icons.person, size:80, color: Colors.white),
-                  ),
+            padding: const EdgeInsets.only(top:40),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                margin: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        const Text("Работник месяца", style: TextStyle(fontSize: 20, color: Colors.cyan,)),
+                        Spacer(),
+                        Icon(Icons.grade, color: Colors.amber, size: 50)
+                      ],
+                    ),
 
-                  SizedBox(height: 30),
+                    const CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.cyan,
+                      child: Icon(Icons.person, size:80, color: Colors.white),
+                    ),
 
-                  const Text(
-                    'Олег Иванов'
+                    SizedBox(height: 30),
+
+                    const Text(
+                      'Олег Соловьёв',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 19),
                     ),
                     const Text(
-                      'Программист - бекэндер'
-                    )
+                      'Программист - бекэндер',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 129, 129, 129)),
+                    ),
 
-                ],
-
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(Icons.phone_android, color: Colors.green, size: 30),
+                        Icon(Icons.message, color: Colors.blueGrey, size: 30),
+                        Icon(Icons.settings, color: Colors.blue, size: 30),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           )

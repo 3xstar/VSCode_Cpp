@@ -49,7 +49,7 @@ class RecipeService:
         for name, info in self.recipes.items():
             if category_filter and info['category'] != category_filter:
                 continue
-            if category_filter and search_filter.lower() not in name.lower():
+            if search_filter and search_filter.lower() not in name.lower():
                 continue
             results.append(name)
         return results
