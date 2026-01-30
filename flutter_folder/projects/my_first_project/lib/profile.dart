@@ -83,14 +83,14 @@ class ProfileApp extends StatelessWidget {
                         Text(
                           'Последний раз в сети:',
                           style: TextStyle(
-                            color: Colors.grey[800],
+                            color: const Color.fromARGB(255, 11, 87, 117),
                             fontSize: 15,
                           ),
                         ),
                         Text(
                           '5 убийств назад',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: const Color.fromARGB(255, 243, 33, 33),
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
                           ),

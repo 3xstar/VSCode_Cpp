@@ -47,8 +47,35 @@ class CardApp extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold,),
               "Доставка пришла! Заберите сегодня")
               ),
+            SizedBox(height: 20),
+            Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8), 
+                  ),
+                  padding: EdgeInsets.all(10),
+                
+                child: Column(
+                  children: [
+                  Text(
+                  "2,5 км",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)
+                    ),
+                  SizedBox(height: 3),
+                  Text(
+                    "до вас",
+                    style: TextStyle(color: Colors.grey, fontSize: 12)
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+            SizedBox(width: 10),
             Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(9),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -61,7 +88,7 @@ class CardApp extends StatelessWidget {
                   ]
                 ),
                 child: Icon(Icons.location_on),
-              )
+              ),
             ],
           ),
         ),
