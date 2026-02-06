@@ -17,7 +17,7 @@ class _CounterWidgetState extends State<CounterWidget> {
     });
   }
   @override
-  Widget build(BuildContext content){
+  Widget build(BuildContext context){
   return MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(

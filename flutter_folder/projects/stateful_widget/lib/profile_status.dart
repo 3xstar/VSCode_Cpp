@@ -10,31 +10,47 @@ class ProfileStatus extends StatefulWidget {
 
 
 class _ProfileStatusState extends State<ProfileStatus> {
-  final List<string> _statuses = [
+  final List<String> _statuses = [
     'Отдыхаю',
     'Работаю',
     'В отпуске',
     'Не в сети'
   ];
-}
 
+  final List<Color> _colorstatuses = [
+    Colors.green,
+    Colors.blue,
+    Colors.orange,
+    Colors.grey
+  ];
 
-int _currentStatusIndex = 0;
+  int _currentIndex = 0;
+  Color _backgroundColor = Colors.white;
 
   void _cycleStatus(){
     setState(() {
 
-      _currentStatusIndex = (_currentStatusIndex + 1) % _statuses.length;
+      _currentIndex = (_currentIndex + 1) % _statuses.length;
     });
+  }
 
-  
-home:Scaffold(
+  void _ColorChange(Color newColor){
+    setState(() {
+      _backgroundColor = newColor;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context){
+  return MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home:Scaffold(
+  backgroundColor: _backgroundColor,
   appBar: AppBar(
     title: const Text('Профиль (цикличный статус)'),
     backgroundColor: Colors.indigo,
   ),
   body: Center(
-    
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -43,7 +59,9 @@ home:Scaffold(
             avatar: const GFAvatar(
               child: Icon(Icons.person),
             ),
-            title: const Text('Светлана'),
+            color: _colorstatuses[_currentIndex],
+          title: const Text(
+            'Светлана',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           subTitle: const Text('Преподаватель математики'),
@@ -51,8 +69,8 @@ home:Scaffold(
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-            'Текущий статус: ${_statuses[_currentStatusIndex]}',
-            style: const TextStle(fontSize: 16),
+            'Текущий статус: ${_statuses[_currentIndex]}',
+            style: const TextStyle(fontSize: 16),
         ),
       ),
     ),
@@ -65,7 +83,29 @@ home:Scaffold(
       type: GFButtonType.outline,
       blockButton: true,
     ),
-    ],
-  ),
+    GFButton(
+      onPressed: () => _ColorChange(Colors.grey),
+      text: "Поменять цвет фона на серый",
+      type: GFButtonType.outline,
+      blockButton: true,
+    ),
+    GFButton(
+      onPressed: () => _ColorChange(Colors.cyanAccent),
+      text: "Поменять цвет фона на голубой",
+      type: GFButtonType.outline,
+      blockButton: true,
+    ),
+    GFButton(
+      onPressed: () => _ColorChange(Colors.black),
+      text: "Поменять цвет фона на черный",
+      type: GFButtonType.outline,
+      blockButton: true,
+    ),
+
+  ],
 ),
 ),
+),
+);
+}
+}
