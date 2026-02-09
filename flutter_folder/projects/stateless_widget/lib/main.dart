@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 //import 'package:stateless_widget/axis.dart';
 //import 'package:stateless_widget/margin_padding.dart';
 //import 'package:stateless_widget/phone_card.dart';
-// import 'package:stateless_widget/delivery_card.dart';
+//import 'package:stateless_widget/delivery_card.dart';
 //import 'package:stateless_widget/track_card.dart';
 //import 'package:stateless_widget/profile.dart';
-import 'package:stateless_widget/keyboard.dart';
+//import 'package:stateless_widget/keyboard.dart';
+import 'package:stateless_widget/email.dart';
+
 void main() {
   //runApp(const MyApp());
-  runApp(const NameApp());
+  runApp(const EmailApp());
 }
 
 class MyApp extends StatelessWidget {

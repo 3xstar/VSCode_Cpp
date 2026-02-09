@@ -57,22 +57,23 @@ import 'package:flutter/material.dart';
                           borderRadius: BorderRadius.circular(12),
                           color: Colors.red,
                             ),
-                      child: const Center(child: Text("-45%", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),)
+                      child: const Center(child: Text("-50%", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),)
                       ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
                   const SizedBox(height: 25),
                   Column(
                     children: [
-                      Text('Супер классная клавиатура "NO NAME X100 ULTRA GAYMING"',
+                      Text('Супер классная клавиатура NO NAME X100 ULTRA GAYMING',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 25,
                       ),
                       textAlign: TextAlign.left,
                     ),
-                    Row(mainAxisAlignment: MainAxisAlignment.start,
+                    SizedBox(height: 5),
+                    Row(
                     children: [
                       Icon(Icons.star, color: CupertinoColors.systemYellow,),
                       Icon(Icons.star, color: CupertinoColors.systemYellow,),
@@ -86,11 +87,43 @@ import 'package:flutter/material.dart';
                         color: Colors.grey,
                       ),
                     ),
-                    ],
-                    ),
                   ],
-                  ),
-                  const SizedBox(height: 15),
+                ),
+                SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Text("5 000₽",
+                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.green),
+                        ),
+
+                        SizedBox(width: 10,),
+
+                        Text("10 000₽",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, decoration: TextDecoration.lineThrough, color: Colors.red),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      children: [
+                      Padding(padding: EdgeInsets.only(right: 35),
+                      child:
+                        Container(
+                            width: 180,
+                            height: 45,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.lightBlue,
+                                ),
+                          child: const Center(child: Text("В корзину", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),),
+                      ),
+                    ),
+                      Icon(Icons.favorite_border_outlined, size: 30,)
+                  ],
+                ),
+              ],
+            ),
+                const SizedBox(height: 10),
               ],
             ),
           ),
