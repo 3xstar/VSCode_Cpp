@@ -10,6 +10,15 @@ class CounterWidget extends StatefulWidget {
 
 class _CounterWidgetState extends State<CounterWidget> {
   int _counter = 0;
+  bool _isLiked = false;
+  int _likeCount = 0;
+
+  void _toggleLike() {
+    setState(() {
+      _isLiked = !_isLiked;
+      _likeCount = _isLiked ? 1 : 0;
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -38,6 +47,22 @@ class _CounterWidgetState extends State<CounterWidget> {
             Text(
               '$_counter',
               style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+            ),
+            IconButton(onPressed: _toggleLike,
+              icon: Icon(
+              _isLiked ? Icons.favorite : Icons.favorite_border,
+              color: _isLiked ? Colors.red : Colors.grey,
+              size: 30,
+            ),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              '$_likeCount',
+              style: TextStyle(
+                color: _isLiked ? Colors.red : Colors.grey,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
             ),
           ],
         ),
