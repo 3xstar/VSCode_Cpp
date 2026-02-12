@@ -14,6 +14,5 @@ new_recipes = pd.DataFrame({
     "duration": ["00:30:00", "01:10:00"]
 })
 
-#df.groupby("category_id".size()) #Группировка по категориям
-
-print(new_recipes)
+df.groupby("category_id").size()
+print(df)

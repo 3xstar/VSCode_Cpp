@@ -9,4 +9,6 @@ df = pd.read_sql(query, engine)
 
 #По категории
 df_sort = df.sort_values(by="name") #Сортировка по названию
-df_sort = df.sort_values(by="duration") #Сортировка по длительности
+df_sort = df.sort_values(by="category_id") #Сортировка по длительности
+
+print(df_sort)
