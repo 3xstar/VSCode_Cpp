@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:stateful_widget/likes_count.dart';
+//import 'package:stateful_widget/likes_count.dart';
 //import 'package:stateful_widget/profile_status.dart';
+import 'package:stateful_widget/register_form.dart';
 
 void main() {
-  runApp(const CounterWidget());
+  runApp(const RegisterForm());
 }
 
 class MyApp extends StatelessWidget {
