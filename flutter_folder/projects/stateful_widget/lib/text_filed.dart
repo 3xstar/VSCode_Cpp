@@ -32,7 +32,11 @@ class _TextFiledAppState extends State<TextFiledApp> {
       _name = _nameController.text;
     });
 
-    
+    GFToast.showToast(
+      'Привет, ${_nameController.text}!',
+      context,
+      toastPosition: GFToastPosition.BOTTOM,
+    );
   }
 
 
@@ -56,13 +60,14 @@ class _TextFiledAppState extends State<TextFiledApp> {
                             labelText: 'Введите имя',
                             border: OutlineInputBorder(),
                           ),
+                          onSubmitted: (_) => _showName(innerContext),
                         ),
                         const SizedBox(height: 10),
                         GFButton(
                           onPressed: () => _showName(innerContext),
                           text: "Показать имя",
                           blockButton: true,
-                        )
+                        ),
                       ],
                     ),
                   ),

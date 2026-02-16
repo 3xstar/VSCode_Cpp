@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 //import 'package:stateful_widget/likes_count.dart';
 //import 'package:stateful_widget/profile_status.dart';
-import 'package:stateful_widget/register_form.dart';
+//import 'package:stateful_widget/register_form.dart';
+import 'package:stateful_widget/text_filed.dart';
 
 void main() {
-  runApp(const RegisterForm());
+  runApp(const TextFiledApp());
 }
 
 class MyApp extends StatelessWidget {
