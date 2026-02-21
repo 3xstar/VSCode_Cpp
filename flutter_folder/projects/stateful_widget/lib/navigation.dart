@@ -1,92 +1,89 @@
 import 'package:flutter/material.dart';
 
-class BasicApp extends StatelessWidget{
+class BasicApp extends StatelessWidget {
   const BasicApp({super.key});
-  
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Навигация наложением',
-      home: FirstScreen(),
+      home: ShowColorScreen(),
     );
   }
 }
 
-class FirstScreen extends StatefulWidget() {
-  const FirstScreen({super.key});
+class ShowColorScreen extends StatefulWidget {
+  const ShowColorScreen({super.key});
 
   @override
-  State<FirstScreen> createState() = _FirstScreenState();
+  State<ShowColorScreen> createState() => _ShowColorScreenState();
 }
 
-class _FirstScreenState extends State<FirstScreen> {
-  late TextEditingController _controller;
+class _ShowColorScreenState extends State<ShowColorScreen> {
+  Color _color = Colors.grey;
 
-  @override
-  void initState(){
-    super.initState();
-    _controller = TextEditingController();
+  void _pickColor() async {
+    final Color? chosenColor = await Navigator.push(context, 
+      MaterialPageRoute(builder: (context) => const PickColorScreen()),
+    );
+
+    if (chosenColor != null) {
+      setState(() {
+        _color = chosenColor;
+      });
+    }
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext content) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Первый экран'),
-        backgroundColor: Colors.lightBlue,
-    ),
-    body: Center(
-      child: Column(
-        children: [
-          TextField(
-            controller: _controller,
-            decoration: InputDecoration(
-              labelText: 'Введите ваше имя'
+        title: Text('Выбранный цвет'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Text('Выбранный цвет:'),
+            Container(
+              width: 50,
+              height: 50,
+              color: _color,
             ),
-          ),
-          const.SizedBox(height: 20),
-
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(),
-              );
-            },
-            child: Text('Передать данные'),
-            ),
+            ElevatedButton(
+              onPressed: _pickColor,
+              child: Text('Перейти на экран выбора цвета')
+            )
           ],
         )
-      )
+      ),
     );
   }
 }
 
-class SecondScreen extends StatelessWidget{
-  const SecondScreen({super.key});
+
+class PickColorScreen extends StatelessWidget {
+  const PickColorScreen({super.key});
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Второй экран'),
-        backgroundColor: Colors.redAccent,
-    ),
-    body: Center(
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.pop(context);
-        }, 
-        child: Text('Вернуться на первый экран')
+        title: Text('Выберите цвет'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context, Colors.red);
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red), 
+              child: Text('красный'),
+            ),
+          ],
         ),
-      )
+      ),
     );
   }
 }
