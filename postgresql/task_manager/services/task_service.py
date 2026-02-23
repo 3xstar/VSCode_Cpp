@@ -1,6 +1,6 @@
 import sys
 sys.path.append('c:/VSCODE/postgresql/task_manager/db')
-from connection import get_connection
+from db.conn import get_connection
 import pandas as pd
 from sqlalchemy import text
 

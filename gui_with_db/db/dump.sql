@@ -438,4 +438,3 @@ ALTER TABLE ONLY recipes.recipes_ingridients
 --
 
 \unrestrict 8F5xgVG66PwFd7ZDnrCCeH1Zv6JqV5KjpByW6i3GzStPrNADNJP0ALBCruNwt48
-

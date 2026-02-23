@@ -1,13 +1,32 @@
 import sys
-sys.path.append('c:/VSCODE/postgresql/dao')
+sys.path.append('c:/VSCODE/postgresql/dao(recipe_manager)')
 from services.recipesService import RecipeRepository
 
 recipe_service = RecipeRepository()
 
 def refresh_recipes():
-    global recipes_df
-    recipes_df = recipe_service.get_all()
-    print(recipes_df, "\n")
+    global recipes
+    recipes = recipe_service.get_all()
+    
+    if not recipes:
+        print("\n📭 Список рецептов пуст")
+        return
+    
+    print("\n" + "-"*100)
+    print(f"{'ID':<3} {'Название':<15} {'Категория':<10} {'Сложность':<10} {'Описание'}")
+    print("-"*100)
+    
+    # Словарь для соответствия id категории и названия
+    categories = {1: "Супы", 2: "Салаты", 3: "Выпечка", 6: "Напитки"}
+    
+    for recipe in recipes:
+        cat_name = categories.get(recipe[2], f"ID:{recipe[2]}")
+        # Обрезаем описание если слишком длинное
+        desc = recipe[4]
+        
+        print(f"{recipe[0]:<3} {recipe[1]:<15} {cat_name:<10} {recipe[3]:<10} {desc}")
+    
+    print("-"*100 + "\n")
 
 
 try:
@@ -52,8 +71,8 @@ try:
 
             if action == 5:
                 category = input("\nВведите название категории для получения рецептов: ")
-                print(recipe_service.get_by_category(category))
-                refresh_recipes()
+                print(recipe_service.get_by_category(category), "\n")
+
 
             if action == 0:
                 break
@@ -62,4 +81,4 @@ try:
             print("Неизвестная ошибка внутри выбора задач\n")
 
 except Exception as e:
-            print("Неизвестная ошибка внутри меню\n")    
+            print("Неизвестная ошибка внутри меню\n")

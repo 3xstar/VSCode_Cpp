@@ -1,4 +1,5 @@
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel 
+# Шапка приложения
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel
 
 class HeaderWidget(QWidget):
         def __init__(self, title:str):

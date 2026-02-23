@@ -1,7 +1,8 @@
-from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout
+# Карточка рецепта
+
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
 from PyQt6.QtCore import pyqtSignal
 
-# Рецепт                 
 class RecipeCardWidget(QWidget):
         selected = pyqtSignal(str)
         

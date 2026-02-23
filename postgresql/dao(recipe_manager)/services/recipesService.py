@@ -1,7 +1,7 @@
 import sys
 import os
-sys.path.append('c:/VSCODE/postgresql/dao')
-from ui.db import get_conn
+sys.path.append('c:/VSCODE/postgresql/dao(recipe_manager)')
+from db.conn import get_conn
 from sqlalchemy import text
 
 class RecipeRepository:
@@ -98,4 +98,7 @@ class RecipeRepository:
                 {'category': category}
             )
             rows = result.fetchall()
-            return rows
+            if rows == []:
+                    print("Такой категории не существует\n")
+            else:
+                return rows
