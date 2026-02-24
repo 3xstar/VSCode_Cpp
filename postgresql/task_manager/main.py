@@ -1,6 +1,6 @@
 import sys
-sys.path.append('c:/VSCODE/postgresql/task_manager/services')
-from services.task_service import TaskRepository
+sys.path.append('c:/VSCODE/postgresql/task_manager')
+from db.task_repository import TaskRepository
 
 repo = TaskRepository()
 tasks_df = repo.get_all()

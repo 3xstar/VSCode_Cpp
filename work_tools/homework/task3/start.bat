@@ -1,1 +1,0 @@
-clang++ -fsanitize=address -g massive_error.cpp -o app.exe
