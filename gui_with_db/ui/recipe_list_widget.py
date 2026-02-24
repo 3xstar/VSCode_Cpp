@@ -12,8 +12,9 @@ class RecipeListWidget(QWidget):
                 self.layout = QVBoxLayout()
                 self.setLayout(self.layout)
         
-        def add_recipe(self, name, category):
-                card = RecipeCardWidget(name, category)
+        def add_recipe(self, recipe_id, name, category):
+                """Добавление рецепта с ID"""
+                card = RecipeCardWidget(recipe_id, name, category)
                 card.selected.connect(self.recipe_selected.emit)
                 self.layout.addWidget(card)
 

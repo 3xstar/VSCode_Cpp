@@ -3,7 +3,7 @@ import db.db as db
 import sys
 import os
 
-sys.path.append(os.path.abspath('C:\\RPO-git\\RPO_base\\МДК.01.01 Разработка программных модулей\\Проекты\\Меню рецептов\\recipe_db'))
+sys.path.append('c:/VSCODE/gui_with_db')
 
 class CategoryService:
         @staticmethod

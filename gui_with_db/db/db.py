@@ -6,8 +6,8 @@ def get_conn():
                 host='localhost', 
                 port=5432,
                 user='postgres',
-                password='password',
-                database='db_name'
+                password='123',
+                database='recipe_db'
         )
 
 '''
