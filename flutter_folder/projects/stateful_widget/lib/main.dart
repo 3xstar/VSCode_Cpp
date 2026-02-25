@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 //import 'package:stateful_widget/register_form.dart';
 //import 'package:stateful_widget/text_filed.dart';
 //import 'package:stateful_widget/navigation.dart';
-import 'package:stateful_widget/register_form_hw.dart';
+//import 'package:stateful_widget/register_form_hw.dart';
+import 'package:stateful_widget/colors.dart';
 void main() {
-  runApp(const RegisterForm());
+  runApp(const BasicApp());
 }
 
 class MyApp extends StatelessWidget {
