@@ -7,7 +7,7 @@ class BasicApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Навигация наложением',
+      title: 'Цвета',
       home: ShowColorScreen(),
     );
   }

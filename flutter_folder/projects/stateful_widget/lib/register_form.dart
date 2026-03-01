@@ -47,7 +47,7 @@ class _RegisterFormState extends State<RegisterForm> {
     final username = _usernameController.text;
     _validationName(username);
     if (_errorText == null) {
-      GFToast.showToast('Пользователь с именем "$username зарегистрирован',
+      GFToast.showToast('Пользователь с именем "$username" зарегистрирован',
       context,
       backgroundColor: GFColors.SUCCESS,
       toastPosition: GFToastPosition.BOTTOM

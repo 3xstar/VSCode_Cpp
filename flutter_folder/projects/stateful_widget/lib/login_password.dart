@@ -1,28 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 
-
-class RegisterForm extends StatefulWidget {
-  const RegisterForm ({super.key});
+class BasicApp extends StatelessWidget {
+  const BasicApp({super.key});
 
   @override
-  State<RegisterForm> createState() => _RegisterFormState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Логин и пароль',
+      home: ShowColorScreen(),
+    );
+  }
 }
 
-class _RegisterFormState extends State<RegisterForm> {
+class ShowColorScreen extends StatefulWidget {
+  const ShowColorScreen({super.key});
+
+  @override
+  State<ShowColorScreen> createState() => _ShowColorScreenState();
+}
+
+class _ShowColorScreenState extends State<ShowColorScreen> {
   late TextEditingController _usernameController;
   late TextEditingController _passwordController;
 
   String? _errorText = '';
   String? _errorText2 = '';
-
+  
   @override
   void initState(){
     super.initState();
     _usernameController = TextEditingController();
     _passwordController = TextEditingController();
   }
-
 
   @override
   void dispose() {
@@ -65,18 +76,16 @@ class _RegisterFormState extends State<RegisterForm> {
     });
   }
 
-  void _register(BuildContext context){
+  void _register(BuildContext context) async{
     final username = _usernameController.text;
     _validationName(username);
     final password = _passwordController.text;
     _validationPassword(password);
 
     if (_errorText == null && _errorText2 == null) {
-      GFToast.showToast('Пользователь с именем "$username" зарегистрирован',
-      context,
-      backgroundColor: GFColors.SUCCESS,
-      toastPosition: GFToastPosition.BOTTOM
-      );
+      await Navigator.push(context, 
+      MaterialPageRoute(builder: (context) => const PickColorScreen()),
+    );
     }
     else if(_errorText != null){
       GFToast.showToast(
@@ -98,13 +107,8 @@ class _RegisterFormState extends State<RegisterForm> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.indigoAccent,
-        body: Builder(
-          builder: (BuildContext innerContext) {
-            return Padding(
+    return Scaffold(
+        body: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
@@ -115,9 +119,9 @@ class _RegisterFormState extends State<RegisterForm> {
                         TextField(
                           controller: _usernameController,
                           onChanged: _validationName,
-                          onSubmitted: (_) => _register(innerContext),
+                          onSubmitted: (_) => _register(context),
                           decoration: InputDecoration(
-                            labelText: 'Введите имя',
+                            labelText: 'Логин',
                             errorText: _errorText,
                             border: const OutlineInputBorder(),
                           ),
@@ -126,29 +130,60 @@ class _RegisterFormState extends State<RegisterForm> {
                         TextField(
                           controller: _passwordController,
                           onChanged: _validationPassword,
-                          onSubmitted: (_) => _register(innerContext),
+                          onSubmitted: (_) => _register(context),
                           decoration: InputDecoration(
-                            labelText: 'Введите пароль',
+                            labelText: 'Пароль',
                             errorText: _errorText2,
                             border: const OutlineInputBorder(),
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        GFButton(
-                          color: Colors.cyan,
-                          onPressed: () => _register(innerContext),
-                          text: "Зарегистрироваться",
-                          blockButton: true,
-                        ),
-                      ],
-                    ),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: () => _register(context),
+                          child: Text('Войти')
+                      ),
+                    ],
                   ),
-                ],
+                ),
+              ],
+            ),
+          ),
+    );
+  }
+}
+
+class PickColorScreen extends StatefulWidget {
+  const PickColorScreen({super.key});
+
+  @override
+  State<PickColorScreen> createState() => _PickColorScreenState();
+}
+
+class _PickColorScreenState extends State<PickColorScreen>{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Экран 2: картинка'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 600,
+              height: 700,
+              decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/bg.jpg"),
+                            fit: BoxFit.cover,
+                          ),
               ),
-            );
-          }
-        )
-      )
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
