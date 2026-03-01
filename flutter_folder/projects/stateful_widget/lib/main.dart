@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 //import 'package:stateful_widget/navigation.dart';
 //import 'package:stateful_widget/register_form_hw.dart';
 //import 'package:stateful_widget/colors.dart';
-import 'package:stateful_widget/login_password.dart';
+import 'package:stateful_widget/verify_to_image.dart';
 void main() {
   runApp(const BasicApp());
 }
