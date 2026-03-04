@@ -34,7 +34,7 @@ final TextEditingController _searchController = TextEditingController();
 
 class SearchPage extends StatelessWidget {
   
-  SearchPage({super.key});
+  const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context){
