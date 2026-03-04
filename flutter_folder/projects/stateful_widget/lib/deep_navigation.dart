@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -7,16 +8,80 @@ class BottomNav extends StatefulWidget {
   State<BottomNav> createState() => _BottomNavState();
 }
 
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
+
+  final List<String> items = List.generate(30, (index) => 'Элемент $index');
+
+  @override
+  Widget build(BuildContext context){
+    return ListView(
+          children: ListTile.divideTiles(
+            context: context,
+            tiles: items.map((item) => ListTile(
+              leading: CircleAvatar(
+                backgroundImage: AssetImage('good_person.jpg'),
+              ),
+              title: Text(item),
+              subtitle: Text("Какое-то там описание"),
+          ))
+        ).toList(),
+      );
+  }
+}
+
+final TextEditingController _searchController = TextEditingController();
+
+class SearchPage extends StatelessWidget {
+  
+  SearchPage({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  TextField
+                  (
+                    controller: _searchController,
+                    decoration: InputDecoration(
+                      labelText: 'Введите имя',
+                      border: const OutlineInputBorder(),
+                      ),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(onPressed: (){
+                    showDialog(context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text("Подтверждение"),
+                        content: Text("Искать ${_searchController.text}?"),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text('Нет')),
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text('Да')),
+                        ],
+                      );
+                    },
+                    );
+                  }, child: Text('Найти'))
+                ],
+              ),
+            );
+          }
+        }
+
+
 class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _screenList = <Widget>[
-    Center(
-      child: Text('Главная страница')
-    ),
-    Center(
-      child: Text('Поиск')
-    ),
+  static List<Widget> screenList = <Widget>[
+    HomePage(),
+    SearchPage(),
     Center(
       child: Text('Профиль')
     )
@@ -34,10 +99,10 @@ class _BottomNavState extends State<BottomNav> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('да'),
+          title: Text('Навигация'),
         ),
 
-        body: _screenList.elementAt(_selectedIndex),
+        body: screenList.elementAt(_selectedIndex),
         // Захар
         bottomNavigationBar: BottomNavigationBar(
           items: [

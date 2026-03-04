@@ -7,9 +7,11 @@ import 'package:flutter/material.dart';
 //import 'package:stateful_widget/register_form_hw.dart';
 //import 'package:stateful_widget/colors.dart';
 //import 'package:stateful_widget/verify_to_image.dart';
-import 'package:stateful_widget/user_edit.dart';
+//import 'package:stateful_widget/user_edit.dart';
+//import 'package:stateful_widget/list.dart';
+import 'package:stateful_widget/deep_navigation.dart';
 void main() {
-  runApp(const BasicApp());
+  runApp(BottomNav());
 }
 
 class MyApp extends StatelessWidget {
