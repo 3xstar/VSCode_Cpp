@@ -11,7 +11,7 @@ class BottomNav extends StatefulWidget {
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final List<String> items = List.generate(30, (index) => 'Элемент $index');
+  final List<String> items = List.generate(30, (index) => 'Пользователь $index');
 
   @override
   Widget build(BuildContext context){
