@@ -16,8 +16,8 @@ class EmailApp extends StatelessWidget{
             children: [
               const GFAvatar(
                 size: 80,
-                child: Icon(Icons.person, size: 60, color: Colors.white),
                 backgroundColor: Colors.blueGrey,
+                child: Icon(Icons.person, size: 60, color: Colors.white),
               ),
               const SizedBox(height: 16),
               const Text(

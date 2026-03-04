@@ -7,11 +7,12 @@ import 'package:flutter/material.dart';
 //import 'package:stateless_widget/track_card.dart';
 //import 'package:stateless_widget/profile.dart';
 //import 'package:stateless_widget/keyboard.dart';
-import 'package:stateless_widget/email.dart';
+//import 'package:stateless_widget/email.dart';
+import 'package:stateless_widget/gridview.dart';
 
 void main() {
   //runApp(const MyApp());
-  runApp(const EmailApp());
+  runApp(const IconGridView());
 }
 
 class MyApp extends StatelessWidget {

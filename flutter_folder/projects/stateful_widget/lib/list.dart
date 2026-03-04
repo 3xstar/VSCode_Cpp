@@ -7,7 +7,7 @@ void main() {
 class ListApp extends StatelessWidget {
   ListApp({super.key});
 
-  final List<String> items = List.generate(30, (index) => 'Элемент ${index}');
+  final List<String> items = List.generate(30, (index) => 'Элемент $index');
 
   @override
   Widget build(BuildContext context){
